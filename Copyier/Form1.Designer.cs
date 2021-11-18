@@ -41,6 +41,7 @@ namespace Copyier
 			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
 			this.button3 = new System.Windows.Forms.Button();
 			this.progressBar1 = new System.Windows.Forms.ProgressBar();
+			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -71,10 +72,15 @@ namespace Copyier
 			this.button1.TabIndex = 2;
 			this.button1.Text = "Выбрать";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// openFileDialog1
 			// 
-			this.openFileDialog1.FileName = "openFileDialog1";
+			this.openFileDialog1.Title = "Выберите исходный файл";
+			// 
+			// folderBrowserDialog1
+			// 
+			this.folderBrowserDialog1.Description = "Выберите папу назначения";
 			// 
 			// button2
 			// 
@@ -85,6 +91,7 @@ namespace Copyier
 			this.button2.TabIndex = 5;
 			this.button2.Text = "Выбрать";
 			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// textBox2
 			// 
@@ -116,9 +123,19 @@ namespace Copyier
 			// numericUpDown1
 			// 
 			this.numericUpDown1.Location = new System.Drawing.Point(15, 103);
+			this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			this.numericUpDown1.Name = "numericUpDown1";
 			this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
 			this.numericUpDown1.TabIndex = 7;
+			this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			// 
 			// button3
 			// 
@@ -129,6 +146,7 @@ namespace Copyier
 			this.button3.TabIndex = 8;
 			this.button3.Text = "Начать";
 			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
 			// progressBar1
 			// 
@@ -137,6 +155,14 @@ namespace Copyier
 			this.progressBar1.Name = "progressBar1";
 			this.progressBar1.Size = new System.Drawing.Size(624, 23);
 			this.progressBar1.TabIndex = 9;
+			// 
+			// backgroundWorker1
+			// 
+			this.backgroundWorker1.WorkerReportsProgress = true;
+			this.backgroundWorker1.WorkerSupportsCancellation = true;
+			this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+			this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+			this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
 			// Form1
 			// 
@@ -177,6 +203,7 @@ namespace Copyier
 		private System.Windows.Forms.NumericUpDown numericUpDown1;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.ProgressBar progressBar1;
+		private System.ComponentModel.BackgroundWorker backgroundWorker1;
 	}
 }
 
